@@ -1,5 +1,5 @@
-let rightButton = document.getElementById("right");
-let leftButton  = document.getElementById("left");
+let rightButton = document.getElementById("right-button");
+let leftButton  = document.getElementById("left-button");
 var carouselCount = 0;
 var slides = document.getElementsByClassName("slide");
 
