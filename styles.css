@@ -1,3 +1,6 @@
+
+/* Image Aspect Ratio - 1933 x 440 */
+
 .slider {
     position: relative;
     width: 100vw;
@@ -49,5 +52,44 @@ button:hover {
 }
 
 
+/* Application Text styling */
 
-/* 1933 x 440 */
+.application {
+    padding: 8vw;
+    font-family: Lato, Helvetica, sans-serif;
+}
+
+.application div {
+    margin-bottom: 6vw;
+}
+
+.application div h1, .links {
+    text-align: center;
+    /* text-decoration: underline; */
+    color: #4F5165;
+}
+
+h2 {
+    color: #53aaa6;
+}
+
+.application div h3 {
+    margin: 2vw;
+    color: #7c7c7c;
+}
+
+hr {
+    width: 75%;
+}
+
+p {
+    font-size:1vw;
+}
+
+@media screen and (min-width: 1000px) {
+    .application {
+        margin:0 auto;
+        width: 1000px;
+    }
+  }
+
