@@ -1,29 +1,14 @@
-
-/* Image Aspect Ratio - 1933 x 440 */
-
-.slider {
-    position: relative;
-    width: 100vw;
-    height: 22.760vw;
-    border-bottom: 1px solid black;
-    overflow: hidden;
+body {
+    display: flex;
+    justify-content:flex-start; 
+    flex-direction: column;
 }
 
-.slide {
-    display: none;
+.carousel {
+    width: 100%;
 }
 
-.slide.is-visible {
-	display: block;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-
-.nav {
+.navigation {
     position: absolute;
     border: none;
     cursor: pointer;
@@ -31,24 +16,89 @@ img {
 }
 
 #left-button {
-    top: 75%;
+    top: 15vw;
     left: 6%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
 #right-button {
-    top: 75%;
+    top: 15vw;
     left: 94%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
 }
+  
+.slide-holder {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+  
+.slide-holder > .slide {
+    position: relative;
+    display: none;
+    animation: 0.5s ease-in-out;
+}
 
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.slide-holder > .active,
+.slide-holder > .next {
+    display: block;
+}
+  
+.slide-holder > .next {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+  
+.slide-holder > .to-left {
+    animation-name: left;
+}
+  
+.slide-holder > .from-right {
+    animation-name: right;
+}
+  
+.slide-holder > .to-right {
+    animation-name: right;
+    animation-direction: reverse;
+}
+  
+.slide-holder > .from-left {
+    animation-name: left;
+    animation-direction: reverse;
+}
+
+@keyframes left {
+    from {
+        left: 0;
+    }
+    to {
+        left: -100%;
+    }
+}
+  
+@keyframes right {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
 
 /* Application Text styling */
 
 .application {
-    padding: 8vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
     font-family: Lato, Helvetica, sans-serif;
+    display: block;
 }
 
 .application div {
@@ -77,6 +127,7 @@ hr {
 p {
     font-size:1vw;
 }
+
 
 @media screen and (min-width: 900px) {
     .application {

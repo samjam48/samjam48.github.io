@@ -1,59 +1,51 @@
-let rightButton = document.getElementById("right-button");
-let leftButton  = document.getElementById("left-button");
-var carouselCount = 0;
-var slides = document.getElementsByClassName("slide");
+const leftButton  = document.getElementById("left-button");
+const rightButton = document.getElementById("right-button");
+let currentSlide = 0;
+let visible = true;
+const slides = document.getElementsByClassName("slide");
 
-const updateSlides = () => {
-    for (var i = 0; i < slides.length; i++) {
-        if( i == carouselCount){
-            slides[i].classList.add('is-visible');
-        } else {
-            slides[i].classList.remove('is-visible');
-        }
-    }
-}
-
-updateSlides();
-
-rightButton.onclick = (event) => slideRight(event);
-leftButton.onclick = (event) => slideLeft(event);
+leftButton.onclick = () => slideLeft(currentSlide);
+rightButton.onclick = () => slideRight(currentSlide);
 
 document.onkeydown = (event) => {
     if (event.keyCode == '37') {
-        slideLeft(event);
+        slideLeft(currentSlide);
+    } else if (event.keyCode == '39') {
+        slideRight(currentSlide);
     }
-    else if (event.keyCode == '39') {
-        slideRight(event);
-    }
+};
+
+function slideLeft(n) {
+    console.log("left clicked");
+	hideSlide('to-right');
+	changeCurrentSlide(n - 1);
+	showSlide('from-left');
 }
 
-const slideRight = (event) => {
-    if (carouselCount < slides.length - 1){
-        carouselCount++;
-    } else {
-        carouselCount = 0;
-    }
-
-    updateSlides();
+function slideRight(n) {
+    console.log("right clicked");
+	hideSlide('to-left');
+	changeCurrentSlide(n + 1);
+	showSlide('from-right');
 }
 
-const slideLeft = (event) => {
-    if (carouselCount > 0){
-        carouselCount--;
-    } else {
-        carouselCount = slides.length - 1;
-    }
-
-    updateSlides();
+function changeCurrentSlide(n) {
+    currentSlide = (n + slides.length) % slides.length;
 }
 
+function hideSlide(direction) {
+    visible = false;
+    slides[currentSlide].classList.add(direction);
+    slides[currentSlide].addEventListener('animationend', function() {
+        this.classList.remove('active', direction);
+    });
+}
 
-
-
-
-/*
-Set selected to centre
-left to -100%
-right to +100%
-others to none
-*/
+function showSlide(direction) {
+	slides[currentSlide].classList.add('next', direction);
+	slides[currentSlide].addEventListener('animationend', function() {
+		this.classList.remove('next', direction);
+		this.classList.add('active');
+		visible = true;
+	});
+}
