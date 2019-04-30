@@ -1,8 +1,4 @@
-/* body {
-    display: flex;
-    justify-content:flex-start; 
-    flex-direction: column;
-} */
+/* -------------- Carousel styling -------------- */
 
 .carousel {
     width: 100%;
@@ -94,7 +90,7 @@
 }
 
 
-/* Details styling */
+/* -------------- Details styling -------------- */
 
 .details {
     padding-left: 8vw;
@@ -107,6 +103,10 @@
 .details div h1, .links {
     text-align: center;
     color: #4F5165;
+}
+
+a {
+    cursor: pointer;
 }
 
 h2 {
@@ -147,6 +147,27 @@ p {
     border-radius: 50%;
 }
 
+h4 {
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link {
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 3vw;
+}
+.icon {
+    width: 30px;
+    color: #53aaa6;
+}
+
+
 @media only screen and (min-width: 600px) {
     .container {
         display: flex;
@@ -157,6 +178,9 @@ p {
     }
     .details-img {
         width: 120px;
+    }
+    .icon {
+        width: 40px;
     }
   }
 
@@ -171,6 +195,10 @@ p {
     }
     .details-img {
         width: 150px;
+    }
+
+    .icon {
+        width: 50px;
     }
   }
 
